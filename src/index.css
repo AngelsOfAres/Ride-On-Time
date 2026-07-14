@@ -1,0 +1,364 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold-100: #fdf4d3;
+  --gold-200: #f5e088;
+  --gold-300: #e8c84a;
+  --gold-400: #c9a227;
+  --gold-500: #a07c10;
+  --gold-600: #6e5508;
+  --blue-deep: #06080f;
+  --blue-900: #0a0e1a;
+  --blue-800: #0d1420;
+  --blue-700: #111c2e;
+  --blue-600: #1a2744;
+  --blue-500: #1e3358;
+  --steel: #8899aa;
+  --steel-light: #aabbc8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--blue-deep);
+  color: #e8e8e8;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--blue-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold-500);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-400);
+}
+
+/* Utility classes */
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-cinzel-decorative {
+  font-family: 'Cinzel Decorative', serif;
+}
+
+/* Gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #f5e088 0%, #c9a227 40%, #e8c84a 70%, #a07c10 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gold-gradient-bright {
+  background: linear-gradient(135deg, #fdf4d3 0%, #e8c84a 40%, #c9a227 70%, #f5e088 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass morphism */
+.glass {
+  background: rgba(13, 20, 32, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 162, 39, 0.15);
+}
+
+.glass-dark {
+  background: rgba(6, 8, 15, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(201, 162, 39, 0.1);
+}
+
+/* Gold border glow */
+.border-gold-glow {
+  border: 1px solid rgba(201, 162, 39, 0.4);
+  box-shadow: 0 0 20px rgba(201, 162, 39, 0.08), inset 0 0 20px rgba(201, 162, 39, 0.03);
+}
+
+/* Separator */
+.gold-separator {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-400), transparent);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gold-separator-full {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.3), transparent);
+}
+
+/* Animations */
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) translateX(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-20vh) translateX(var(--drift, 0px)) scale(var(--end-scale, 1));
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(201, 162, 39, 0.3), 0 0 60px rgba(201, 162, 39, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(201, 162, 39, 0.5), 0 0 100px rgba(201, 162, 39, 0.2);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes logo-reveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+    filter: brightness(0) blur(10px);
+  }
+  50% {
+    filter: brightness(1.5) blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: brightness(1) blur(0);
+  }
+}
+
+@keyframes border-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes spotlight {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.25; transform: scale(1.1); }
+}
+
+.roster-card-link {
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.roster-card-link:hover,
+.hover-card-wrapper:hover {
+  transform: scale(1.03);
+}
+
+.hover-card-wrapper {
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.6s ease forwards;
+}
+
+.animate-logo-reveal {
+  animation: logo-reveal 1.5s ease forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Raid progress bar */
+.progress-bar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shimmer 2s infinite;
+  background-size: 200% auto;
+}
+
+/* Hero canvas */
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Section reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Corner ornament */
+.corner-ornament::before,
+.corner-ornament::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--gold-400);
+  border-style: solid;
+  opacity: 0.6;
+}
+
+.corner-ornament::before {
+  top: 12px;
+  left: 12px;
+  border-width: 2px 0 0 2px;
+}
+
+.corner-ornament::after {
+  bottom: 12px;
+  right: 12px;
+  border-width: 0 2px 2px 0;
+}
+
+.shine {
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 42%, rgba(255,255,255,0.2) 50%, transparent 58%);
+  background-size: 300% 100%;
+  transform: translateX(-120%);
+  transition: transform 700ms ease-out, opacity 250ms ease;
+  opacity: 0.85;
+}
+
+.group:hover .shine,
+.roster-card-link:hover .shine,
+.hover-card-wrapper:hover .shine,
+.roster-card-link:focus .shine,
+.hover-card-wrapper:focus .shine {
+  transform: translateX(120%);
+}
+
+/* Card links (raider.io / warcraftlogs) - hidden until hover */
+.card-links {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-6px) scale(0.96);
+  transition: opacity 220ms ease, transform 260ms cubic-bezier(0.22,1,0.36,1);
+}
+
+.group:hover .card-links,
+.roster-card-link:hover .card-links,
+.hover-card-wrapper:hover .card-links,
+.roster-card:focus-within .card-links,
+.roster-card-link:focus .card-links {
+  opacity: 0.8;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.card-links img {
+  width: 22px;
+  height: 22px;
+  display: block;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45));
+}
+
+/* On touch devices / coarse pointers, always show the icons and make them tappable */
+@media (hover: none), (pointer: coarse) {
+  .card-links {
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+  }
+
+  /* tone down shine and heavy hover effects on touch */
+  .group .shine,
+  .roster-card-link .shine,
+  .hover-card-wrapper .shine {
+    opacity: 0.6;
+    transition: none;
+  }
+
+  /* reduce tilt motion feel on touch by easing transforms */
+  .roster-card {
+    transition: transform 240ms ease !important;
+  }
+}
